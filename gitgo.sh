@@ -64,6 +64,8 @@ if [ -n "$REMOTE" ]; then
     if [ $TAG ]; then
         git push --tags
     fi
-    git checkout develop
-    git push -u origin develop
+    if [ $FLOW ]; then
+        git checkout develop
+        git push -u origin develop
+    fi
 fi
