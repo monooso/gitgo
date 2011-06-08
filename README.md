@@ -11,3 +11,5 @@ Bash script to initialise a new Git project. Performs the following steps:
 8. Pushes the master branch, and sets it to track `origin/master`.
 9. Pushes the develop branch, and sets it to track `origin/develop`.
 10. Pushes the 0.1.0 tag.
+
+GitGo currently assumes that you do not deviate from the git-flow default branch names of "master" and "develop"
