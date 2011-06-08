@@ -5,9 +5,9 @@ Bash script to initialise a new Git project. Performs the following steps:
 1. Runs `git init`.
 2. Adds all files to the repo.
 3. Creates an "initial commit".
-4. Creates a tag if argument is passed.
-5. Runs `git flow init` if -f option is passed.
-6. Checks if remote origin argument was passed. If so then:
+4. Creates a tag if `-t` argument is passed.
+5. Runs `git flow init` if `-f` option is passed.
+6. Checks if remote origin argument (`-r`) was passed. If so then:
 7. Sets the remote origin.
 8. Pushes the master branch, and sets it to track `origin/master`.
 9. Pushes the develop branch, and sets it to track `origin/develop`.
@@ -16,7 +16,7 @@ Bash script to initialise a new Git project. Performs the following steps:
 
 # Usage #
 
-`gitgo.sh [-f] [-t=INITIAL_TAG] [-r=REMOTE_REPO]`
+`$ gitgo.sh [-f] [-t=INITIAL_TAG] [-r=REMOTE_REPO]`
 
 **`-f`**
 
@@ -39,4 +39,4 @@ Sample Command
 # Notes #
 
 * GitGo currently assumes that you do not deviate from the git-flow default branch names of "master" and "develop"
-* You can alternatively move the script into your $PATH for easier access
+* You can alternatively move the script into your `$PATH` for easier access
