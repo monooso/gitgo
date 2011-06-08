@@ -20,7 +20,7 @@ Bash script to initialise a new Git project. Performs the following steps:
 
 **`-f`**
 
-Indicates the intent to use git flow
+Indicates the intent to use [git-flow](https://github.com/nvie/gitflow)
 
 **`-t`**
 
