@@ -5,14 +5,25 @@
 # 1. Runs git init.
 # 2. Adds all files to the repo.
 # 3. Creates an "initial commit".
-# 4. Creates a '0.1.0' tag.
-# 5. Runs git flow init.
-# 6. Prompts the user for a remote git repository address.
-# 7. Sets the remote origin.
+# 4. Creates a tag if argument is passed
+# 5. Runs git flow init if -f option is passed
+# 6. Prompts the user for a remote git repository address if necessary
+# 7. Sets the remote origin if instructed
 # 8. Pushes the develop branch, and sets it to track origin/develop.
 # 9. Pushes the master branch, and sets is to track origin/master.
-# 10. Pushes the 0.1.0 tag.
+# 10. Pushes the tag if necessary
 #
+
+
+while getopts "fr:t:" Option
+do
+  case $Option in
+    f ) FLOW=1;;
+    r ) REMOTE=${OPTARG};;
+    t ) TAG=${OPTARG};;
+  esac
+done
+
 
 #
 # Initialise the git repository.
@@ -24,36 +35,37 @@ git init
 git add .
 git commit -m "Initial commit."
 
+
 #
 # Tag the release.
 #
-git tag "0.1.0" -m "Version 0.1.0"
+if [ $TAG ]; then
+    git tag $TAG -m "Version $TAG"
+fi
 
-#
-# Initialise git flow. User is prompted for branch names.
-#
-echo "----------------------------------------"
-echo "Initialising git flow..."
-echo "----------------------------------------"
-git flow init
 
-#
-# Prompt for remote origin.
-#
-echo "Enter remote repository address (or leave blank for none):"
-read REMOTE_REPO
+if [ $FLOW ]; then
+    #
+    # Initialise git flow. User is prompted for branch names.
+    #
+    echo "----------------------------------------"
+    echo "Initialising git flow..."
+    echo "----------------------------------------"
+    git flow init
+fi
 
-#
-# Set the remote origin, and push.
-#
-if [ -n "$REMOTE_REPO" ]; then
+if [ -n "$REMOTE" ]; then
     echo "----------------------------------------"
     echo "Pushing to remote repository..."
     echo "----------------------------------------"
-    git remote add origin "$REMOTE_REPO"
+    git remote add origin "$REMOTE"
     git checkout master
     git push -u origin master
-    git push --tags
-    git checkout develop
-    git push -u origin develop
+    if [ $TAG ]; then
+        git push --tags
+    fi
+    if [ $FLOW ]; then
+        git checkout develop
+        git push -u origin develop
+    fi
 fi
