@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gitgo by experience</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/experience/gitgo">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/experience/gitgo/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/experience/gitgo/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Gitgo</h1>
+          <p>Bash script to initialise a new Git repository.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/experience">experience</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>GitGo</h1>
+
+<h2>Overview</h2>
+
+<p>GitGo is a bash script to initialise a new Git project. It performs the following steps:</p>
+
+<ol>
+<li>Runs <code>git init</code>.</li>
+<li>Adds all files to the repo.</li>
+<li>Creates an "initial commit".</li>
+<li>Creates a tag if <code>-t</code> argument is passed.</li>
+<li>Runs <code>git flow init</code> if <code>-f</code> option is passed.</li>
+<li>Checks if remote origin argument (<code>-r</code>) was passed. If so then:</li>
+<li>Sets the remote origin.</li>
+<li>Pushes the master branch, and sets it to track <code>origin/master</code>.</li>
+<li>Pushes the develop branch, and sets it to track <code>origin/develop</code>.</li>
+<li>Pushes the tag if created.</li>
+</ol><h2>Usage</h2>
+
+<div class="highlight"><pre>gitgo.sh <span class="o">[</span>-f<span class="o">]</span> <span class="o">[</span>-t<span class="o">=</span>INITIAL_TAG<span class="o">]</span> <span class="o">[</span>-r<span class="o">=</span>REMOTE_REPO<span class="o">]</span>
+</pre></div>
+
+<h3>Options</h3>
+
+<p><code>-f</code>
+: Indicates the intent to use <a href="https://github.com/nvie/gitflow">git-flow</a></p>
+
+<p><code>-t</code>
+: Indicates the intent to tag your repo state. Pass the tag value to this argument.</p>
+
+<p><code>-r</code>
+: Pass your remote repository path to this argument.</p>
+
+<h3>Example usage</h3>
+
+<div class="highlight"><pre>gitgo.sh -f -t 0.1 -r git@github.com:erikreagan/gitgo.git
+</pre></div>
+
+<h2>Notes</h2>
+
+<ul>
+<li>GitGo currently assumes that you do not deviate from the git-flow default branch names of <code>master</code> and <code>develop</code>
+</li>
+<li>You can alternatively move the script into your <code>$PATH</code> for easier access</li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
