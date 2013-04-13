@@ -1,6 +1,6 @@
-# GitGo #
-
-Bash script to initialise a new Git project. Performs the following steps:
+# GitGo
+## Overview
+GitGo is a bash script to initialise a new Git project. It performs the following steps:
 
 1. Runs `git init`.
 2. Adds all files to the repo.
@@ -14,29 +14,29 @@ Bash script to initialise a new Git project. Performs the following steps:
 10. Pushes the tag if created.
 
 
-# Usage #
+## Usage
 
-`$ gitgo.sh [-f] [-t=INITIAL_TAG] [-r=REMOTE_REPO]`
+````bash
+gitgo.sh [-f] [-t=INITIAL_TAG] [-r=REMOTE_REPO]
+````
 
-**`-f`**
+### Options
+`-f`
+: Indicates the intent to use [git-flow](https://github.com/nvie/gitflow)
 
-Indicates the intent to use [git-flow](https://github.com/nvie/gitflow)
+`-t`
+: Indicates the intent to tag your repo state. Pass the tag value to this argument.
 
-**`-t`**
+`-r`
+: Pass your remote repository path to this argument.
 
-Indicates the intent to tag your repo state. Pass the tag value to this argument.
+### Example usage
 
-**`-r`**
+````bash
+gitgo.sh -f -t 0.1 -r git@github.com:erikreagan/gitgo.git
+````
 
-Pass your remote repository path to this argument.
+## Notes
 
-Sample Command
---------------
-
-`gitgo.sh -f -t 0.1 -r git@github.com:erikreagan/gitgo.git`
-
-
-# Notes #
-
-* GitGo currently assumes that you do not deviate from the git-flow default branch names of "master" and "develop"
+* GitGo currently assumes that you do not deviate from the git-flow default branch names of `master` and `develop`
 * You can alternatively move the script into your `$PATH` for easier access
